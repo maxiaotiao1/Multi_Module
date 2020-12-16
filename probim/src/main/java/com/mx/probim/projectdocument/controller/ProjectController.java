@@ -76,15 +76,14 @@ public class ProjectController{
     }
 
     /**
-     * 文件树
+     * 根文件夹树
      */
-    @GetMapping("/getFolderTree")
-    public BaseResponse getFolderTree(@RequestParam Long id){
-
-        //获取本项目下的所有文件
-        List<Document> root = projectDocumentMergeService.findRootFolderListByProjectId(id);
+    @GetMapping("/getRootFolderTree")
+    public BaseResponse getRootFolderTree(@RequestParam Long id){
+        //获取本项目下的所有文件夹
+        List<Document> root = projectDocumentMergeService.findFolderListByProjectId(id);
+        //组装根文件夹树
         List<DocumentRes> tree = DocumentTreeUtils.merge(root,0L);
-        System.out.println(tree);
         Map<String, Object> restMap = new HashMap<>();
         restMap.put("list", tree);
         return ResultVOUtils.success(restMap);
@@ -104,7 +103,6 @@ public class ProjectController{
     //删除文件或文件夹
     @GetMapping("/delDocument")
     public BaseResponse delDocument(@RequestParam Long id){
-        //获取文件树
         Document document = documentService.getById(id);
         if (document == null){
             return ResultVOUtils.error(ResultEnum.DATA_NOT);
@@ -115,6 +113,7 @@ public class ProjectController{
         }else {
             DocumentRes documentRes = new DocumentRes();
             BeanUtils.copyProperties(document, documentRes);
+            //获取子文件树（包括文件夹和文件）
             List<DocumentRes> documents = documentService.recFindDocumentTree(id);
             documentRes.setChildren(documents);
             List<DocumentRes> documentRes1 = new ArrayList<>();

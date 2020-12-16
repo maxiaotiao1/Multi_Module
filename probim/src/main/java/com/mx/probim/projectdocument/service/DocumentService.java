@@ -16,7 +16,7 @@ public interface DocumentService extends IService<Document> {
     //删除文件
     boolean delFileById(Document document);
 
-    //递归查找
+    //递归文件树（包括文件夹和文件）
     List<DocumentRes> recFindDocumentTree(Long id);
 
     //查找父级文件下子文件

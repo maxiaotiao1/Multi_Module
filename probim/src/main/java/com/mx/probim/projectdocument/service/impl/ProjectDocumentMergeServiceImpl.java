@@ -17,7 +17,7 @@ public class ProjectDocumentMergeServiceImpl extends ServiceImpl<ProjectDocument
     ProjectDocumentMergeDao projectDocumentMergeDao;
 
     @Override
-    public List<Document> findRootFolderListByProjectId(Long projectId) {
+    public List<Document> findFolderListByProjectId(Long projectId) {
         return projectDocumentMergeDao.findFolderListByProjectId(projectId);
     }
 

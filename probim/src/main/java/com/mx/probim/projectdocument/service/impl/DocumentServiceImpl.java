@@ -9,7 +9,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,12 +49,12 @@ public class DocumentServiceImpl extends ServiceImpl<DocumentDao, Document> impl
     public List<DocumentRes> recFindDocumentTree(Long id) {
         //创建返回数组对象
         List<DocumentRes> documentResList = new ArrayList<>();
-        //创建返回数组对象
+        //获取孩子文件（包括文件夹和文件）id列表
         List<Document> documentList = documentDao.findDocumentIdsByPid(id);
         for (Document document: documentList) {
             DocumentRes documentRes = new DocumentRes();
             BeanUtils.copyProperties(document, documentRes);
-            //查找以当前节点为父节点的孩子
+            //查找以当前节点为父节点的孩子树
             documentRes.setChildren(recFindDocumentTree(document.getId()));
             documentResList.add(documentRes);
             }
