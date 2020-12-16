@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.mx.shiro.dao.AuthPermissionDao">
+
+    <select id="listUrlAndRuleByIdIn" resultType="com.mx.shiro.entity.AuthPermission">
+        SELECT `url`,`rule`
+        FROM auth_permission
+        where id IN
+        <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+
+    <insert id="insertAuthPermission" keyProperty="id"
+            parameterType="com.mx.shiro.entity.AuthPermission">
+        INSERT INTO auth_permission(pid,url,title,status,rule,type,listorder,create_time,update_time)
+        values
+        (#{pid},
+        #{url},
+        #{title},
+        #{status},
+        <choose>
+            <when test="rule != null">
+                #{rule},
+            </when>
+            <otherwise>
+                '',
+            </otherwise>
+        </choose>
+        #{type},
+        #{listorder},
+        #{createTime},
+        #{updateTime})
+    </insert>
+
+    <update id="updateAuthPermission" parameterType="com.mx.shiro.entity.AuthPermission">
+        UPDATE auth_permission
+        <set>
+            <if test="pid != null">pid=#{pid},</if>
+            <if test="url != null">`url`=#{url},</if>
+            <if test="title != null">title=#{title},</if>
+            <if test="status != null">`status`=#{status},</if>
+            <if test="type != null">`type`=#{type},</if>
+            <if test="rule != null">`url`=#{url},</if>
+            <if test="listorder != null">`listorder`=#{listorder},</if>
+            <if test="updateTime != null">update_time=#{updateTime},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>api</artifactId>
+        <groupId>com.mx</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shiro</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <spring.shiro.version>1.6.0</spring.shiro.version>
+    </properties>
+
+    <dependencies>
+<!--        引入公共模块-->
+        <dependency>
+            <groupId>com.mx</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${spring.shiro.version}</version>
+        </dependency>
+
+        <!--ip定位-->
+        <dependency>
+            <groupId>com.googlecode.plist</groupId>
+            <artifactId>dd-plist</artifactId>
+            <version>1.21</version>
+        </dependency>
+
+        <!--JWT-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+        <!--工具包.-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
+
+
+    </dependencies>
+
+
+</project>
