@@ -1,12 +1,7 @@
 package com.mx.probim.projectdocument.controller;
 
-import com.aliyun.oss.OSSClient;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.fasterxml.jackson.databind.util.BeanUtil;
-import com.mx.common.enums.ResultEnum;
-import com.mx.common.res.BaseResponse;
+import com.mx.common.globalexception.ResultEnum;
 import com.mx.common.res.ResultVOUtils;
-import com.mx.common.util.TreeUtils;
 import com.mx.probim.projectdocument.dao.ProjectDao;
 import com.mx.probim.projectdocument.entity.Document;
 import com.mx.probim.projectdocument.entity.ProjectDocumentMerge;
@@ -18,19 +13,11 @@ import com.mx.probim.projectdocument.service.ProjectDocumentMergeService;
 import com.mx.probim.projectdocument.service.ProjectService;
 import com.mx.probim.projectdocument.util.AliyunOSSClientUtil;
 import com.mx.probim.projectdocument.util.DocumentTreeUtils;
-import com.sun.tools.internal.ws.processor.model.Response;
-import org.apache.commons.io.FilenameUtils;
-import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RestController

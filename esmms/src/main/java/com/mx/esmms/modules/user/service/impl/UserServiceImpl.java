@@ -6,7 +6,7 @@ import com.mx.esmms.modules.user.mapper.UserMapper;
 import com.mx.esmms.modules.user.service.UserService;
 import org.springframework.stereotype.Service;
 
-@Service("userService")
+@Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
 }

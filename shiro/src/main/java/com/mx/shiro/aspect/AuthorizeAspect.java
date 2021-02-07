@@ -1,7 +1,7 @@
 package com.mx.shiro.aspect;
 
-import com.mx.common.enums.ResultEnum;
-import com.mx.common.exception.JsonException;
+import com.mx.common.globalexception.ResultEnum;
+import com.mx.common.globalexception.GlobalException;
 import com.mx.shiro.annotation.AuthRuleAnnotation;
 import com.mx.shiro.service.AuthLoginService;
 import com.mx.shiro.utils.JwtUtils;
@@ -13,6 +13,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -30,7 +31,7 @@ import java.util.List;
 @Slf4j
 public class AuthorizeAspect {
 
-    @Resource
+    @Autowired
     private AuthLoginService authLoginService;
 
     @Pointcut("@annotation(com.mx.shiro.annotation.AuthRuleAnnotation)")
@@ -47,7 +48,7 @@ public class AuthorizeAspect {
 
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (attributes == null) {
-            throw new JsonException(ResultEnum.NOT_NETWORK);
+            throw new GlobalException(ResultEnum.NOT_NETWORK);
         }
 
         HttpServletRequest request = attributes.getRequest();
@@ -56,24 +57,24 @@ public class AuthorizeAspect {
         try {
             adminId = Long.valueOf(id);
         } catch (Exception e) {
-            throw new JsonException(ResultEnum.LOGIN_VERIFY_FALL);
+            throw new GlobalException(ResultEnum.LOGIN_VERIFY_FALL);
         }
 
         String token = request.getHeader("X-Token");
         if (token == null) {
-            throw new JsonException(ResultEnum.LOGIN_VERIFY_FALL);
+            throw new GlobalException(ResultEnum.LOGIN_VERIFY_FALL);
         }
 
         // 验证 token
         Claims claims = JwtUtils.parse(token);
         if (claims == null) {
-            throw new JsonException(ResultEnum.LOGIN_VERIFY_FALL);
+            throw new GlobalException(ResultEnum.LOGIN_VERIFY_FALL);
         }
         Long jwtAdminId = Long.valueOf(claims.get("admin_id").toString());
 
         //验证用户id 有没有被更改
         if (adminId.compareTo(jwtAdminId) != 0) {
-            throw new JsonException(ResultEnum.LOGIN_VERIFY_FALL);
+            throw new GlobalException(ResultEnum.LOGIN_VERIFY_FALL);
         }
 
         // 判断是否进行权限验证
@@ -103,7 +104,7 @@ public class AuthorizeAspect {
                     return;
                 }
             }
-            throw new JsonException(ResultEnum.AUTH_FAILED);
+            throw new GlobalException(ResultEnum.AUTH_FAILED);
         }
     }
 

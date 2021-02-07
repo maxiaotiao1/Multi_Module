@@ -1,11 +1,12 @@
 package com.mx.shiro.service.impl;
 
-import com.mx.common.enums.ResultEnum;
-import com.mx.common.exception.JsonException;
+import com.mx.common.globalexception.ResultEnum;
+import com.mx.common.globalexception.GlobalException;
 import com.mx.shiro.dao.AuthPermissionDao;
 import com.mx.shiro.entity.AuthPermission;
 import com.mx.shiro.service.AuthPermissionService;
 import com.mx.shiro.utils.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,7 +20,7 @@ import java.util.List;
 @Service
 public class AuthPermissionServiceImpl implements AuthPermissionService {
 
-    @Resource
+    @Autowired
     private AuthPermissionDao authPermissionDao;
 
     /**
@@ -118,7 +119,7 @@ public class AuthPermissionServiceImpl implements AuthPermissionService {
             // 查询是否存在
             AuthPermission byName = authPermissionDao.findByUrl(authPermission.getUrl());
             if (byName != null && !authPermission.getId().equals(byName.getId())) {
-                throw new JsonException(ResultEnum.DATA_REPEAT, "当前权限规则已存在");
+                throw new GlobalException(ResultEnum.DATA_REPEAT, "当前权限规则已存在");
             }
         }
 

@@ -5,6 +5,7 @@ import com.mx.common.util.CacheUtils;
 import com.mx.shiro.dao.AuthRoleAdminDao;
 import com.mx.shiro.entity.AuthRoleAdmin;
 import com.mx.shiro.service.AuthRoleAdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 @Service
 public class AuthRoleAdminServiceImpl implements AuthRoleAdminService {
 
-    @Resource
+    @Autowired
     private AuthRoleAdminDao authRoleAdminDao;
 
     /**

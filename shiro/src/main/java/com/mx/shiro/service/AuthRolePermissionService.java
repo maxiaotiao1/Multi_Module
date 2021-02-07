@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface AuthRolePermissionService {
 
-
     List<AuthRolePermission> listByRoleIdIn(List<Long> roleIds);
 
     List<AuthRolePermission> listByRoleId(Long roleId);

@@ -1,7 +1,6 @@
 package controller;
 
-import com.mx.common.enums.ResultEnum;
-import com.mx.common.res.BaseResponse;
+import com.mx.common.globalexception.ResultEnum;
 import com.mx.common.res.ResultVOUtils;
 import com.mx.shiro.annotation.AuthRuleAnnotation;
 import com.mx.shiro.entity.AuthPermission;
@@ -11,13 +10,13 @@ import com.mx.shiro.service.AuthPermissionService;
 import com.mx.shiro.utils.PermissionRuleTreeUtils;
 import com.mx.shiro.utils.Result;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +28,7 @@ import java.util.Map;
 @RestController
 public class AuthPermissionController {
 
-    @Resource
+    @Autowired
     private AuthPermissionService authPermissionService;
 
     /**

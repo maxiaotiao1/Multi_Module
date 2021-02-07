@@ -1,8 +1,7 @@
 package controller;
 
 import com.github.pagehelper.PageInfo;
-import com.mx.common.enums.ResultEnum;
-import com.mx.common.res.BaseResponse;
+import com.mx.common.globalexception.ResultEnum;
 import com.mx.common.res.PageSimpleResponse;
 import com.mx.common.res.ResultVOUtils;
 import com.mx.shiro.annotation.AuthRuleAnnotation;
@@ -19,6 +18,7 @@ import com.mx.shiro.service.AuthRoleService;
 import com.mx.shiro.utils.PasswordUtils;
 import com.mx.shiro.utils.Result;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,10 +36,10 @@ import java.util.stream.Collectors;
 @RestController
 public class AuthAdminController {
 
-    @Resource
+    @Autowired
     private AuthAdminService authAdminService;
 
-    @Resource
+    @Autowired
     private AuthRoleService authRoleService;
 
     @Resource

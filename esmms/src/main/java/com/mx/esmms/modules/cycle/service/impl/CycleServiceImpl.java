@@ -6,6 +6,6 @@ import com.mx.esmms.modules.cycle.mapper.CycleMapper;
 import com.mx.esmms.modules.cycle.service.CycleService;
 import org.springframework.stereotype.Service;
 
-@Service("cycleService")
+@Service
 public class CycleServiceImpl extends ServiceImpl<CycleMapper, CyclePerformance> implements CycleService {
 }

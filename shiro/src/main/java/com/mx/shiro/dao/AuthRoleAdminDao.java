@@ -4,11 +4,12 @@ import com.mx.shiro.entity.AuthRoleAdmin;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Component
 @Mapper
 public interface AuthRoleAdminDao {
 

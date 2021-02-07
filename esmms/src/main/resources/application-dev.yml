@@ -14,3 +14,12 @@ cors:
   allowed-headers: Content-Type,X-Adminid,X-Token
   allowed-methods: GET,POST,OPTIONS,PATCH
 
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-shanghai.aliyuncs.com
+      keyid: LTAIz7uiYCvAbELb
+      keysecret: lnMTq7v6v76wsusteS0gvgmciBg7BB
+      #bucket可以在控制台创建，也可以使用java代码创建
+      bucketname: kongbenfitness
+      basefile: headimg

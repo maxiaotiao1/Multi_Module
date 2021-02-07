@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/esmms/pom.xml" />
         <option value="$PROJECT_DIR$/mqtt/pom.xml" />
         <option value="$PROJECT_DIR$/probim/pom.xml" />
+        <option value="$PROJECT_DIR$/rfid/pom.xml" />
       </list>
     </option>
   </component>

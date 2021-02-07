@@ -3,6 +3,7 @@ package com.mx.shiro.service.impl;
 import com.mx.shiro.dao.AuthRolePermissionDao;
 import com.mx.shiro.entity.AuthRolePermission;
 import com.mx.shiro.service.AuthRolePermissionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +13,7 @@ import java.util.List;
 @Service
 public class AuthRolePermissionServiceImpl implements AuthRolePermissionService {
 
-    @Resource
+    @Autowired
     private AuthRolePermissionDao authRolePermissionDao;
 
     /**

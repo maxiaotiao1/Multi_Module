@@ -6,6 +6,6 @@ import com.mx.esmms.modules.rate.mapper.ArticleRateMapper;
 import com.mx.esmms.modules.rate.service.ArticleRateService;
 import org.springframework.stereotype.Service;
 
-@Service("articleRateService")
+@Service
 public class ArticleRateServiceImpl extends ServiceImpl<ArticleRateMapper, ArticleRate> implements ArticleRateService {
 }

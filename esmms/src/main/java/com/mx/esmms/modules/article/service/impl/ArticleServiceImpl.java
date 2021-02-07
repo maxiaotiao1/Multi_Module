@@ -6,6 +6,6 @@ import com.mx.esmms.modules.article.mapper.ArticleMapper;
 import com.mx.esmms.modules.article.service.ArticleService;
 import org.springframework.stereotype.Service;
 
-@Service("articleService")
+@Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper,Article> implements ArticleService {
 }

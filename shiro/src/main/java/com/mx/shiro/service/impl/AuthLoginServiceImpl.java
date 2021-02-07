@@ -10,6 +10,7 @@ import com.mx.shiro.service.AuthPermissionService;
 import com.mx.shiro.service.AuthRolePermissionService;
 import com.mx.shiro.service.AuthRoleAdminService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,17 +18,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 @Slf4j
+@Service
 public class AuthLoginServiceImpl implements AuthLoginService {
 
-    @Resource
+    @Autowired
     private AuthRoleAdminService authRoleAdminService;
 
-    @Resource
+    @Autowired
     private AuthRolePermissionService authRolePermissionService;
 
-    @Resource
+    @Autowired
     private AuthPermissionService authPermissionService;
 
 

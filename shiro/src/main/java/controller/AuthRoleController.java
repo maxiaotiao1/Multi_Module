@@ -1,8 +1,7 @@
 package controller;
 
 import com.github.pagehelper.PageInfo;
-import com.mx.common.enums.ResultEnum;
-import com.mx.common.res.BaseResponse;
+import com.mx.common.globalexception.ResultEnum;
 import com.mx.common.res.PageSimpleResponse;
 import com.mx.common.res.ResultVOUtils;
 import com.mx.shiro.annotation.AuthRuleAnnotation;
@@ -19,6 +18,7 @@ import com.mx.shiro.service.AuthRolePermissionService;
 import com.mx.shiro.service.AuthRoleService;
 import com.mx.shiro.utils.PermissionRuleTreeUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,10 +35,10 @@ import java.util.stream.Collectors;
 @RestController
 public class AuthRoleController {
 
-    @Resource
+    @Autowired
     private AuthRoleService authRoleService;
 
-    @Resource
+    @Autowired
     private AuthPermissionService authPermissionService;
 
     @Resource

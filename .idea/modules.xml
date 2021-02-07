@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/esmms/esmms.iml" filepath="$PROJECT_DIR$/esmms/esmms.iml" />
       <module fileurl="file://$PROJECT_DIR$/mqtt/mqtt.iml" filepath="$PROJECT_DIR$/mqtt/mqtt.iml" />
       <module fileurl="file://$PROJECT_DIR$/probim/probim.iml" filepath="$PROJECT_DIR$/probim/probim.iml" />
       <module fileurl="file://$PROJECT_DIR$/project_api.iml" filepath="$PROJECT_DIR$/project_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rfid/rfid.iml" filepath="$PROJECT_DIR$/rfid/rfid.iml" />
       <module fileurl="file://$PROJECT_DIR$/shiro/shiro.iml" filepath="$PROJECT_DIR$/shiro/shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-common/web-common.iml" filepath="$PROJECT_DIR$/web-common/web-common.iml" />
     </modules>
   </component>
 </project>

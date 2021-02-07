@@ -1,25 +1,25 @@
 package com.mx.shiro.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.mx.common.enums.ResultEnum;
-import com.mx.common.exception.JsonException;
+import com.mx.common.globalexception.ResultEnum;
+import com.mx.common.globalexception.GlobalException;
 import com.mx.shiro.dao.AuthAdminDao;
 import com.mx.shiro.entity.AuthAdmin;
 import com.mx.shiro.req.AuthAdminQueryRequest;
 import com.mx.shiro.service.AuthAdminService;
 import com.mx.shiro.utils.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class AuthAdminServiceImpl implements AuthAdminService {
 
-    @Resource
+    @Autowired
     private AuthAdminDao authAdminDao;
 
     @Override
@@ -98,7 +98,7 @@ public class AuthAdminServiceImpl implements AuthAdminService {
             AuthAdmin byUserName = authAdminDao.findByUserName(authAdmin.getUsername());
             // 判断是否存在，剔除自己
             if (byUserName != null && !authAdmin.getId().equals(byUserName.getId())) {
-                throw new JsonException(ResultEnum.DATA_REPEAT, "当前管理员已存在");
+                throw new GlobalException(ResultEnum.DATA_REPEAT, "当前管理员已存在");
             }
         }
 

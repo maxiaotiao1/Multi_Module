@@ -44,27 +44,4 @@ public class SwaggerConfig {
                 .version("1.0")
                 .build();
     }
-
-//    @Bean
-//    public Docket webApiConfig() {
-//
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .groupName("webApi")
-//                .apiInfo(webApiInfo())
-//                .select()
-//                .paths(Predicates.not(PathSelectors.regex("/admin/.*")))
-//                .paths(Predicates.not(PathSelectors.regex("/error.*")))
-//                .build();
-//
-//    }
-//
-//    private ApiInfo webApiInfo() {
-//
-//        return new ApiInfoBuilder()
-//                .title("API文档")
-//                .description("微服务接口定义")
-//                .version("1.0")
-//                .contact(new Contact("MaXiao", "http://kongbenfitness.com", "maxiao_1996@163.com"))
-//                .build();
-//    }
 }

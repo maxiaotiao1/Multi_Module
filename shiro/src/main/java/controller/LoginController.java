@@ -1,8 +1,7 @@
 package controller;
 
-import com.mx.common.enums.ResultEnum;
-import com.mx.common.exception.JsonException;
-import com.mx.common.res.BaseResponse;
+import com.mx.common.globalexception.ResultEnum;
+import com.mx.common.globalexception.GlobalException;
 import com.mx.common.res.ResultVOUtils;
 import com.mx.shiro.entity.AuthAdmin;
 import com.mx.shiro.req.LoginRequest;
@@ -57,11 +56,11 @@ public class LoginController {
 
         AuthAdmin authAdmin = authAdminService.findByUserName(loginRequest.getUserName());
         if (authAdmin == null) {
-            throw new JsonException(ResultEnum.DATA_NOT, "用户名或密码错误");
+            throw new GlobalException(ResultEnum.DATA_NOT, "用户名或密码错误");
         }
 
         if (!PasswordUtils.authAdminPwd(loginRequest.getPwd()).equals(authAdmin.getPassword())) {
-            throw new JsonException(ResultEnum.DATA_NOT, "用户名或密码错误");
+            throw new GlobalException(ResultEnum.DATA_NOT, "用户名或密码错误");
         }
 
         // 更新登录状态
@@ -132,13 +131,13 @@ public class LoginController {
 
         AuthAdmin authAdmin = authAdminService.findPwdById(updatePasswordRequest.getAdminId());
         if (authAdmin == null) {
-            throw new JsonException(ResultEnum.DATA_NOT);
+            throw new GlobalException(ResultEnum.DATA_NOT);
         }
         String oldPwd = PasswordUtils.authAdminPwd(updatePasswordRequest.getOldPassword());
         // 旧密码不对
         if (authAdmin.getPassword() != null
                 && !authAdmin.getPassword().equals(oldPwd)) {
-            throw new JsonException(ResultEnum.DATA_NOT, "旧密码匹配失败");
+            throw new GlobalException(ResultEnum.DATA_NOT, "旧密码匹配失败");
         }
 
         AuthAdmin authAdminUp = new AuthAdmin();

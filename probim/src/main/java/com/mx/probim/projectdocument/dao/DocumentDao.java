@@ -25,7 +25,7 @@ public interface DocumentDao extends BaseMapper<Document> {
     List<Document> findDocumentIdsByPid(Long pid);
 
     //根据pid查找子文件
-    @Select("select id,pid,file_name,file_type,file_size,file_path,create_time,update_time")
+    @Select("select id,pid,file_name,file_type,file_size,file_path,create_time,update_time from document where pid = #{pid}")
     List<Document> findDocumentListByPid(Long pid);
 
 }

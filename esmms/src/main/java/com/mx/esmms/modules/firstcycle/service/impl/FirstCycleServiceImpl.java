@@ -6,6 +6,6 @@ import com.mx.esmms.modules.firstcycle.mapper.FirstCycleMapper;
 import com.mx.esmms.modules.firstcycle.service.FirstCycleService;
 import org.springframework.stereotype.Service;
 
-@Service("firstCycleService")
+@Service
 public class FirstCycleServiceImpl extends ServiceImpl<FirstCycleMapper, FirstCycle> implements FirstCycleService {
 }
